@@ -8,8 +8,8 @@
     "build": "gulp build",
     "start": "gulp run"
   },
-  "author": "Falk Hoppe <falkhoppe81@gmail.com>",
-  "license": "MIT",
+  "author": "Andreas Niehues <andreas@niehu.es>",
+  "license": "Copyright 2016 Andreas Niehues",
   "devDependencies": {
     "convict": "^1.4.0",
     "gulp": "^3.9.1",
