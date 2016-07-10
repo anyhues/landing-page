@@ -5,16 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build"
+    "build": "gulp build",
+    "start": "gulp run"
   },
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "convict": "^1.4.0",
     "gulp": "^3.9.1",
     "gulp-plumber": "^1.1.0",
+    "gulp-print": "^2.0.1",
     "gulp-pug": "^3.0.3",
     "gulp-replace": "^0.5.4",
+    "gulp-stylus": "^2.5.0",
     "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.8",
+    "live-server": "^1.0.0",
     "niehues-base": "file:///Users/falk/code/github.com/niehues/niehues-base",
     "standard": "^7.1.2"
   }
