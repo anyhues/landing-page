@@ -10,7 +10,7 @@ const plumber = require('gulp-plumber')
 const watch = require('gulp-watch')
 
 // internal dependencies
-const core = require('niehues-base')
+const core = require('niehues-core')
 const config = require('./lib/config')
 
 const buildStyles = (stream) =>

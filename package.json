@@ -21,7 +21,7 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.8",
     "live-server": "^1.0.0",
-    "niehues-base": "file:///Users/falk/code/github.com/niehues/niehues-base",
+    "niehues-core": "file:///Users/falk/code/github.com/niehues/niehues-core",
     "standard": "^7.1.2"
   }
 }
