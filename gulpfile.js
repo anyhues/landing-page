@@ -1,6 +1,6 @@
 // external dependencies
 const gulp = require('gulp')
-const gutil = require('gulp-util')
+// const gutil = require('gulp-util')
 const pug = require('gulp-pug')
 const liveServer = require('live-server')
 const stylus = require('gulp-stylus')
@@ -30,58 +30,50 @@ const createSourceMaps = () => config.get('env') === 'development'
 const buildStyles = (stream) => {
   const withSourceMaps = createSourceMaps()
 
-  return del(config.get('styleDistPath'))
-  .then(() => stream)
-  .then(stream => stream.pipe(plumber()))
-  .then(stream => stream.pipe(print((file) => `${file} changed: build styles`)))
-  .then(stream => {
-    if (withSourceMaps) return stream.pipe(sourcemaps.init())
-    return stream
-  })
-  .then(stream => stream.pipe(stylus()))
-  .then(stream => {
-    if (prefixStyles()) {
-      return stream.pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false }))
-    }
-    return stream
-  })
-  .then(stream => {
-    if (withSourceMaps) return stream.pipe(sourcemaps.write())
-    return stream
-  })
-  .then(stream => stream.pipe(gulp.dest(config.get('styleDistPath'))))
+  let s = stream
+  .pipe(print((file) => `${file} changed, building styles`))
+  .pipe(plumber())
+
+  s = withSourceMaps ? s.pipe(sourcemaps.init()) : s
+  s = s.pipe(stylus())
+  s = prefixStyles() ? s.pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false })) : s
+  s = withSourceMaps ? s.pipe(sourcemaps.write()) : s
+
+  return s.pipe(gulp.dest(config.get('styleDistPath')))
 }
 
-const buildTemplates = (stream, options = {}) => {
-  return del([`!${config.get('templateDistPath')}`, config.get('templateDistGlob')])
-  .then(() => stream)
-  .then(stream => stream.pipe(plumber()))
-  .then(stream => stream.pipe(print((file) => `${file} changed: build template`)))
-  .then(stream => stream.pipe(pug({ basedir: core.templatePath, pretty: true })))
-  .then(stream => {
-    if (revisionFiles()) {
-      gutil.log(`${config.get('env')} mode: reference revisioned files`)
-      // sync file lookup of the in asset step generated manifest
-      const manifest = gulp.src(`${config.get('distPath')}/rev-manifest.json`)
-      return stream.pipe(revReplace({manifest: manifest}))
-    }
-    return stream
-  })
-  .then(stream => stream.pipe(gulp.dest(config.get('templateDistPath'))))
+const buildTemplates = (stream) => {
+  let s = stream
+  .pipe(plumber())
+  .pipe(print((file) => `${file} changed, building templates`))
+  .pipe(pug({ basedir: core.templatePath, pretty: true }))
+
+  if (revisionFiles()) {
+    const manifest = gulp.src(`${config.get('styleBuildPath')}/rev-manifest.json`)
+    s = s
+    .pipe(revReplace({manifest: manifest}))
+    .pipe(print((file) => `${file} replacing revision references`))
+  }
+
+  return s.pipe(gulp.dest(config.get('templateDistPath')))
 }
 
-gulp.task('styles', () => buildStyles(gulp.src(config.get('styleGlob'))))
-gulp.task('templates', () => buildTemplates(gulp.src(config.get('templateGlob'))))
+gulp.task('clean-styles', () => del(config.get('styleDistPath')))
+gulp.task('styles', ['clean-styles'], () => buildStyles(gulp.src(config.get('styleGlob'))))
+
+gulp.task('clean-templates', () => del([`!${config.get('templateDistPath')}`, config.get('templateDistGlob')]))
+gulp.task('templates', ['clean-templates'], () => buildTemplates(gulp.src(config.get('templateGlob'))))
 
 gulp.task('prod-templates', () =>
-  buildTemplates(gulp.src(config.get('templateGlob'), { revved: true })))
+  buildTemplates(gulp.src(config.get('templateGlob'))))
 
 gulp.task('prod-assets', ['styles'], function () {
-  return gulp.src([config.get('styleDistGlob')], {base: config.get('distPath')})
-    .pipe(rev())
-    .pipe(gulp.dest(config.get('distPath')))  // write rev'd assets to build dir
-    .pipe(rev.manifest())
-    .pipe(gulp.dest(config.get('distPath'))) // write manifest to build dir
+  return gulp.src([config.get('styleDistGlob')], { base: config.get('distPath') })
+  .pipe(print((file) => `${file}: building revved version`))
+  .pipe(rev())
+  .pipe(gulp.dest(config.get('buildPath')))  // write rev'd assets to build dir
+  .pipe(rev.manifest())
+  .pipe(gulp.dest(config.get('styleBuildPath'))) // write manifest to build dir
 })
 
 // local dev server
@@ -126,8 +118,10 @@ gulp.task('dev-mode', (cb) => {
 gulp.task('collect-release', () =>
   gulp.src(config.get('distGlob')).pipe(gulp.dest(config.get('buildPath'))))
 
+gulp.task('clean-build', () => del(config.get('buildPath')))
+
 gulp.task('prod-build', (cb) => {
-  sequence('prod-mode', 'prod-assets', 'prod-templates', 'collect-release', 'dev-mode')(cb)
+  sequence('clean-build', 'prod-mode', 'prod-assets', 'prod-templates', 'collect-release', 'dev-mode')(cb)
 })
 
 gulp.task('deploy', ['prod-build'], () => {
