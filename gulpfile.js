@@ -4,6 +4,7 @@ const pug = require('gulp-pug')
 const liveServer = require('live-server')
 const stylus = require('gulp-stylus')
 const print = require('gulp-print')
+const plumber = require('gulp-plumber')
 // `gulp-watch` is able to react for new files as well as deleted files,
 // in contrast to `gulp.watch`
 const watch = require('gulp-watch')
@@ -14,12 +15,14 @@ const config = require('./lib/config')
 
 const buildStyles = (stream) =>
   stream
+  .pipe(plumber())
   .pipe(print((file) => `${file} changed: build styles`))
   .pipe(stylus())
   .pipe(gulp.dest('./dist/css'))
 
 const buildTemplates = (stream) =>
   stream
+  .pipe(plumber())
   .pipe(print((file) => `${file} changed: build template`))
   .pipe(pug({
     basedir: core.templatePath,
