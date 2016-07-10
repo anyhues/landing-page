@@ -5,6 +5,7 @@ const liveServer = require('live-server')
 const stylus = require('gulp-stylus')
 const print = require('gulp-print')
 const plumber = require('gulp-plumber')
+const autoprefixer = require('gulp-autoprefixer')
 // `gulp-watch` is able to react for new files as well as deleted files,
 // in contrast to `gulp.watch`
 const watch = require('gulp-watch')
@@ -18,6 +19,10 @@ const buildStyles = (stream) =>
   .pipe(plumber())
   .pipe(print((file) => `${file} changed: build styles`))
   .pipe(stylus())
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
   .pipe(gulp.dest('./dist/css'))
 
 const buildTemplates = (stream) =>
