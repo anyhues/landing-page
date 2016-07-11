@@ -88,7 +88,9 @@ gulp.task('server', (done) => {
     host: config.get('host'),
     open: true,
     root: './dist',
-    wait: 1000
+    wait: 0,
+    ignore: 'styles,templates',
+    watch: [ 'dist' ]
   }
 
   liveServer.start(serverConfig)
@@ -97,7 +99,7 @@ gulp.task('server', (done) => {
 
 // dev build runner
 gulp.task('watch-templates', () => buildTemplates(watch(config.get('templateGlob'))))
-gulp.task('watch-styles', () => buildTemplates(watch(config.get('templateGlob'))))
+gulp.task('watch-styles', () => buildStyles(watch(config.get('styleGlob'))))
 gulp.task('watch', ['watch-templates', 'watch-styles'])
 
 // development start script
