@@ -28,6 +28,7 @@
     "gulp-watch": "^4.3.8",
     "live-server": "^1.0.0",
     "niehues-core": "file:///Users/falk/code/github.com/niehues/niehues-core",
+    "ress": "^1.1.1",
     "standard": "^7.1.2"
   }
 }

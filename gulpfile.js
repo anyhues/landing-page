@@ -35,7 +35,10 @@ const buildStyles = (stream) => {
   .pipe(plumber())
 
   s = withSourceMaps ? s.pipe(sourcemaps.init()) : s
-  s = s.pipe(stylus())
+  s = s.pipe(stylus({
+    include: './node_modules',
+    'include css': true
+  }))
   s = prefixStyles() ? s.pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false })) : s
   s = withSourceMaps ? s.pipe(sourcemaps.write()) : s
 
