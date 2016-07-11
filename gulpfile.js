@@ -35,10 +35,12 @@ const buildStyles = (stream) => {
   .pipe(plumber())
 
   s = withSourceMaps ? s.pipe(sourcemaps.init()) : s
+
   s = s.pipe(stylus({
     include: './node_modules',
     'include css': true
   }))
+
   s = prefixStyles() ? s.pipe(autoprefixer({ browsers: ['last 2 versions'], cascade: false })) : s
   s = withSourceMaps ? s.pipe(sourcemaps.write()) : s
 
@@ -102,7 +104,7 @@ gulp.task('server', (done) => {
 
 // dev build runner
 gulp.task('watch-templates', () => buildTemplates(watch(config.get('templateGlob'))))
-gulp.task('watch-styles', () => buildStyles(watch(config.get('styleGlob'))))
+gulp.task('watch-styles', () => watch(config.get('styleWatchGlob'), () => buildStyles(gulp.src(config.get('styleGlob')))))
 gulp.task('watch', ['watch-templates', 'watch-styles'])
 
 // development start script
