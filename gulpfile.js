@@ -61,9 +61,6 @@ gulp.task('styles', ['clean-styles'], () => buildStyles(gulp.src(config.get('sty
 gulp.task('clean-templates', () => del([`!${config.get('templateDistPath')}`, config.get('templateDistGlob')]))
 gulp.task('templates', ['clean-templates'], () => buildTemplates(gulp.src(config.get('templateGlob'))))
 
-// gulp.task('prod-templates', () =>
-//   buildTemplates(gulp.src(config.get('templateGlob'))))
-
 gulp.task('prod-assets', ['styles'], function () {
   return gulp.src([config.get('styleDistGlob')], { base: config.get('distPath') })
   .pipe(print((file) => `${file}: building revved version`))
