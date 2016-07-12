@@ -1,15 +1,11 @@
 const gulp = require('gulp')
 const config = require('./lib/config')
 
-const styleTasks = require('./lib/tasks/style-tasks')
-const templateTasks = require('./lib/tasks/template-tasks')
-const releaseTasks = require('./lib/tasks/release-tasks')
-const developmentTasks = require('./lib/tasks/development-tasks')
 const tasks = [
-  styleTasks,
-  templateTasks,
-  releaseTasks,
-  developmentTasks
+  require('./lib/tasks/style-tasks'),
+  require('./lib/tasks/template-tasks'),
+  require('./lib/tasks/release-tasks'),
+  require('./lib/tasks/development-tasks')
 ]
 
 tasks.forEach(service => service.load(gulp, config))
