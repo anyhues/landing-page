@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const config = require('./lib/config')
 
 const tasks = [
+  require('./lib/tasks/image-tasks'),
   require('./lib/tasks/style-tasks'),
   require('./lib/tasks/template-tasks'),
   require('./lib/tasks/release-tasks'),
