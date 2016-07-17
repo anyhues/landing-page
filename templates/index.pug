@@ -5,7 +5,12 @@ block head
   link(rel='stylesheet' href='css/main.css')
 
 block content
-  header.main-header(style="background-image: url(/images/landing-page-bg.png)")
+  header.main-header
+    <picture>
+     <source srcset="/images/landing-page-bg.png" media="(min-width: 1200px)">
+     <source srcset="/images/landing-page-bg-640.png" media="(min-width: 640px)">
+     <img src="/images/landing-page-bg-320.png" alt="">
+    </picture>
     .central-teaser
       h1 Andreas Niehues
   section.content
