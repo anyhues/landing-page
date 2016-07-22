@@ -17,5 +17,5 @@ gulp.task('run', sequence(['watch', 'server']))
 
 gulp.task('deploy', ['prod-build'], () => {
   gulp.src('dist/**/*')
-  .pipe(gulp.dest('build'))
+  .pipe(gulp.dest(config.get('buildPath')))
 })
