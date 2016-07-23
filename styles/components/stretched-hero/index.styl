@@ -1,19 +1,36 @@
+@require '../spinner'
+
 .stretched-hero
   background-color rgb(159, 212, 193)
-  // background-size cover
-  // background-position center bottom
 
-  /* Set rules to fill background */
   min-height 100%
-  width: 100%;
-  height: 100%;
+  width 100%
+  height 100%
 
   position relative
   overflow hidden
 
-  .central-teaser
+  &:before
+    @extend .spinner
+    content ''
+    display block
     position absolute
+
     top 50%
+    left 50%
+    transform translateX(-50%)
+
+  .central-teaser
+    width 100%
+    text-align center
+
+    font-family modern_sansregular, 'Helvetica Neue', Helvetica, Arial, sans-serif
+    color #fff
+    font-size 2rem
+    letter-spacing .3rem
+
+    position absolute
+    top 30%
     left 50%
     transform translate(-50%, -50%)
 
@@ -22,6 +39,6 @@
     min-width 100%
     height auto
     position absolute
-    top 0
+    top 50%
     left 50%
-    transform translate(-50%)
+    transform translate(-50%, -50%)
