@@ -16,6 +16,6 @@ tasks.forEach(service => service.load(gulp, config))
 gulp.task('run', sequence(['watch', 'server']))
 
 gulp.task('deploy', ['prod-build'], () => {
-  gulp.src('dist/**/*')
+  gulp.src(config.get('distGlob'))
   .pipe(gulp.dest(config.get('buildPath')))
 })
