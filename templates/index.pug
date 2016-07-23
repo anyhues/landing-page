@@ -6,14 +6,21 @@ block head
 
 block content
   header.main-header
-    <picture>
-     <source srcset="/images/landing-page-bg-1380.png" media="(min-width: 1200px)">
-     <source srcset="/images/landing-page-bg-1024.png" media="(min-width: 640px)">
-     <img src="/images/landing-page-bg-640.png" alt="">
-    </picture>
+    nav.meta
+      ul
+        li
+          a über mich
+        li
+          a impressum
+
+    picture
+      source(srcset="/images/landing-page-bg-1380.png" media="(min-width: 1200px)")
+      source(srcset="/images/landing-page-bg-1024.png" media="(min-width: 640px)")
+      img( src="/images/landing-page-bg-640.png" alt="")
+
     .central-teaser
       h1 Andreas Niehues
-      p.sub_title Systemisch integrative Praxis für Paar- und Familientherapie, Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik
+      p.sub-title Systemisch integrative Praxis für Paar- und Familientherapie, Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik
 
   section.content
     p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
