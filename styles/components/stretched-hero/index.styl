@@ -20,13 +20,23 @@
     left 50%
     transform translateX(-50%)
 
+  .overlay
+    background-color rgba(0,0,0, .5)
+    position absolute
+    top 0
+    right 0
+    bottom 0
+    left 0
+    z-index 999
+
   .central-teaser
     position absolute
-    top 33%
+    top 60%
     left 50%
     transform translate(-50%, -50%)
     width 90%
     color #fff
+    z-index 1000
 
     h1
       text-align center
@@ -35,12 +45,11 @@
       letter-spacing .3rem
 
     p.sub-title
-      display none
       margin-top 2rem
       font-family JaapokkiRegular, 'Helvetica Neue', Helvetica, Arial, sans-serif
       font-size 2rem
+      text-align center
       // background-color rgba(37, 37, 37, 0.66)
-
 
   img
     min-height 100%
