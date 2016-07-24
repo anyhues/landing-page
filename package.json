@@ -29,6 +29,7 @@
     "gulp-stylus": "^2.5.0",
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.8",
+    "ionicons": "^3.0.0",
     "live-server": "^1.0.0",
     "niehues-core": "file:///Users/falk/code/github.com/niehues/niehues-core",
     "picturefill": "^3.0.2",
