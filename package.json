@@ -34,5 +34,8 @@
     "picturefill": "^3.0.2",
     "ress": "^1.1.1",
     "standard": "^7.1.2"
+  },
+  "dependencies": {
+    "jstransformer-markdown-it": "^0.2.3"
   }
 }
