@@ -5,29 +5,11 @@ block head
   link(rel='stylesheet' href='css/main.css')
 
 block content
-  header.main-header
-    div.overlay
-    nav.meta
-      ul
-        li
-          a über mich
-        li
-          a impressum
-
-    picture
-      source(srcset="/images/landing-page-bg-1380.png" media="(min-width: 1200px)")
-      source(srcset="/images/landing-page-bg-1024.png" media="(min-width: 640px)")
-      img( src="/images/landing-page-bg-640.png" alt="")
-
-    .central-teaser
-      h1 Andreas Niehues
-      p.sub-title
-        | Systemisch integrative Praxis für Paar- und Familientherapie,
-        br
-        | Coaching und psychologische Beratung, Sexualberatung und Sexualpädagogik
-
   section.content
     .area
       include:markdown-it landing-page/welcome.md
+
+    +teaser-list(['couples', 'family', 'single'])
+
     .area
       include:markdown-it landing-page/methods.md
