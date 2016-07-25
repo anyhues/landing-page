@@ -4,11 +4,10 @@ include /helper
 //- block head
 
 block content
-  section.content
-    .area
-      include:markdown-it landing-page/welcome.md
+  .area
+    include:markdown-it landing-page/welcome.md
 
-    +teaser-list(['couples', 'family', 'single', 'corporations'])
+  +teaser-list(['couples', 'family', 'single', 'corporations'])
 
-    .area
-      include:markdown-it landing-page/methods.md
+  .area
+    include:markdown-it landing-page/methods.md
