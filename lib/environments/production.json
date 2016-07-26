@@ -1,3 +1,5 @@
 {
-  "assetHost": "https://niehues-assets.github.io"
+  "assetHost": "https://niehues-assets.github.io",
+  "couplesHost": "https://anyhues.github.io/couples",
+  "familyHost": "https://anyhues.github.io/family"
 }

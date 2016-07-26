@@ -32,6 +32,6 @@
     "gulp-watch": "^4.3.8",
     "jstransformer-markdown-it": "^0.2.3",
     "live-server": "^1.0.0",
-    "niehues-assets": "file:///Users/falk/code/github.com/niehues/niehues-assets"
+    "niehues-assets": "file:///Users/falk/code/github.com/niehues/assets"
   }
 }

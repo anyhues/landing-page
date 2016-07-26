@@ -1,3 +1,5 @@
 {
-  "assetHost": "http://localhost:8235"
+  "assetHost": "http://localhost:8235",
+  "couplesHost": "http://localhost:8236",
+  "familyHost": "http://localhost:8237"
 }
