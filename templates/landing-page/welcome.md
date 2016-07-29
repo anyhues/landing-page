@@ -1,6 +1,6 @@
 ## Herzlich willkommen
 
-* wenn Sie eine kompetente **[Einzel- oder Paartherapeutin](http://)** suchen
+* wenn Sie eine kompetente [Einzel- oder Paartherapeutin](http://) suchen
 * wenn Sie eine professionelle Seminarleiterin suchen, die **Weiterbildung** mit Spaß und hohem Lerneffekt anbietet
 * wenn Sie für Ihre **Supervision** im Einzel oder Teamsetting jemanden mit breitem Methodenspektrum und langjähriger Erfahrung suchen
 * wenn Sie einen Coach suchen, der durch die klinisch-therapeutische und durch die Organisationsbrille blicken kann
