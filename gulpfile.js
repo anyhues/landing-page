@@ -19,7 +19,7 @@ tasks.forEach(service => service.load(gulp, config))
 gulp.task('run', sequence(['watch', 'server']))
 
 gulp.task('deploy', ['dist'], () => {
-  gulp.src(config.get('distGlob'))
+  gulp.src([config.get('distGlob'), 'CNAME'])
   .pipe(ghPages({
     remoteUrl: 'git@github.com:anyhues/anyhues.github.io.git',
     branch: 'master'
