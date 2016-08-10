@@ -1,4 +1,4 @@
-## Ich freue mich, dass Sie die Internetpräsenz meiner systemisch-integragiven Praxis besuchen.
+## Ich freue mich, dass Sie die Internetpräsenz meiner systemisch-integrativen Praxis besuchen.
 
 Was Sie von mir von mir erwarten können:
 
