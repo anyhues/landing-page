@@ -4,6 +4,7 @@ const gutil = require('gulp-util')
 const print = require('gulp-print')
 const sequence = require('gulp-sequence')
 const ghPages = require('gulp-gh-pages')
+const sitemap = require('gulp-sitemap')
 
 const assets = require('niehues-assets')
 
@@ -21,7 +22,17 @@ tasks.forEach(service => service.load(gulp, config))
 
 gulp.task('run', sequence(['watch', 'server']))
 
-gulp.task('deploy', ['dist'], () => {
+gulp.task('sitemap', () => {
+  return gulp.src([`${config.get('distPath')}/**/*.html`, path.resolve(__dirname, 'sitemap-dummies/**/*')])
+  .pipe(sitemap({
+    siteUrl: config.get('homeHost')
+  }))
+  .pipe(gulp.dest(config.get('distPath')))
+})
+
+gulp.task('prod-build', sequence('dist', 'sitemap'))
+
+gulp.task('deploy', ['prod-build'], () => {
   gulp.src([config.get('distGlob'), 'CNAME'])
   .pipe(ghPages({
     remoteUrl: 'git@github.com:anyhues/anyhues.github.io.git',
