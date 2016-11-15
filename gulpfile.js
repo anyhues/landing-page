@@ -33,7 +33,7 @@ gulp.task('sitemap', () => {
 gulp.task('prod-build', sequence('dist', 'sitemap'))
 
 gulp.task('deploy', ['prod-build'], () => {
-  gulp.src([config.get('distGlob'), 'CNAME'])
+  gulp.src([config.get('distGlob'), 'CNAME', 'robots.txt'])
   .pipe(ghPages({
     remoteUrl: 'git@github.com:anyhues/anyhues.github.io.git',
     branch: 'master'
