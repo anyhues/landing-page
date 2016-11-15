@@ -1,0 +1,5 @@
+# Allow everything
+User-Agent: *
+Disallow:
+
+Sitemap: http://www.praxis-niehues.de/sitemap.xml
