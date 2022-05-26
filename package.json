@@ -19,7 +19,7 @@
     "standard": "^7.1.2"
   },
   "dependencies": {
-    "convict": "^1.4.0",
+    "convict": "^6.2.3",
     "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-gh-pages": "^0.5.4",
